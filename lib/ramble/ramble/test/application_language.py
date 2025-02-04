@@ -8,7 +8,6 @@
 """Perform tests of the Application class"""
 
 import pytest
-import deprecation
 
 from ramble.appkit import *  # noqa
 
@@ -17,22 +16,6 @@ app_types = [
     ApplicationBase,  # noqa: F405
     ExecutableApplication,  # noqa: F405
 ]
-
-
-@deprecation.fail_if_not_removed
-@pytest.mark.parametrize("app_class", app_types)
-def test_application_type_features(app_class):
-    app_path = "/path/to/app"
-    test_app = app_class(app_path)
-    assert hasattr(test_app, "workloads")
-    assert hasattr(test_app, "executables")
-    assert hasattr(test_app, "figures_of_merit")
-    assert hasattr(test_app, "inputs")
-    assert hasattr(test_app, "compilers")
-    assert hasattr(test_app, "software_specs")
-    assert hasattr(test_app, "required_packages")
-    assert hasattr(test_app, "maintainers")
-    assert hasattr(test_app, "package_manager_configs")
 
 
 def add_workload(app_inst, wl_num=1):
@@ -181,7 +164,6 @@ def add_input_file(app_inst, input_num=1):
 
 
 # TODO: can this be dried with the modifier language add_compiler?
-@deprecation.fail_if_not_removed
 def add_compiler(app_inst, spec_num=1):
     spec_name = "Compiler%spec_num"
     spec_pkg_spec = f"compiler_base@{spec_num}.0 +var1 ~var2"

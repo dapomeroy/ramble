@@ -7,7 +7,6 @@
 # except according to those terms.
 """Perform tests of the Application class"""
 
-import deprecation
 import pytest
 
 from ramble.modkit import *  # noqa
@@ -15,28 +14,6 @@ from ramble.language.language_base import DirectiveError
 
 
 mod_types = [ModifierBase, BasicModifier]  # noqa: F405
-
-
-@deprecation.fail_if_not_removed
-@pytest.mark.parametrize("mod_class", mod_types)
-def test_modifier_type_features(mod_class):
-    mod_path = "/path/to/mod"
-    test_mod = mod_class(mod_path)
-    assert hasattr(test_mod, "figure_of_merit_contexts")
-    assert hasattr(test_mod, "archive_patterns")
-    assert hasattr(test_mod, "figures_of_merit")
-    assert hasattr(test_mod, "modes")
-    assert hasattr(test_mod, "variable_modifications")
-    assert hasattr(test_mod, "software_specs")
-    assert hasattr(test_mod, "compilers")
-    assert hasattr(test_mod, "required_packages")
-    assert hasattr(test_mod, "success_criteria")
-    assert hasattr(test_mod, "builtins")
-    assert hasattr(test_mod, "modifier_variables")
-    assert hasattr(test_mod, "executable_modifiers")
-    assert hasattr(test_mod, "env_var_modifications")
-    assert hasattr(test_mod, "maintainers")
-    assert hasattr(test_mod, "package_manager_configs")
 
 
 def add_mode(mod_inst, mode_num=1):

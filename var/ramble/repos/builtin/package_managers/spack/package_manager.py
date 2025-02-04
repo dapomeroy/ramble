@@ -150,50 +150,6 @@ class Spack(SpackLightweight):
             except RunnerError as e:
                 logger.die(e)
 
-    @deprecation.deprecated(
-        deprecated_in="0.5.0",
-        removed_in="0.6.0",
-        current_version=str(ramble.ramble_version),
-        details="Package name variables are deprecated. Transition to the {package_name_path} syntax",
-    )
-    def __print_deprecated_warning(self, package_name):
-        logger.warn(
-            f'The package path variable "{package_name}" is deprecated'
-        )
-        logger.warn(f'Please transition to "{package_name}_path" instead.')
-
-    register_phase(
-        "warn_deprecated_variables",
-        pipeline="setup",
-        run_after=["make_experiments"],
-    )
-
-    def _warn_deprecated_variables(self, workspace, app_inst=None):
-        cache = workspace.pkg_path_cache[self.name]
-
-        app_context = self.app_inst.expander.expand_var_name(
-            self.keywords.env_name
-        )
-
-        require_env = self.environment_required()
-        software_environments = workspace.software_environments
-        software_environment = software_environments.render_environment(
-            app_context, self.app_inst.expander, self, require=require_env
-        )
-
-        if software_environment is not None:
-            for (
-                pkg_spec
-            ) in software_environments.package_specs_for_environment(
-                software_environment
-            ):
-                if pkg_spec in cache:
-                    spack_pkg_name, pkg_path = cache.get(pkg_spec)
-                    if (
-                        spack_pkg_name
-                        in self.app_inst.expander._used_variables
-                    ):
-                        self.__print_deprecated_warning(spack_pkg_name)
 
     register_builtin(
         "spack_activate",

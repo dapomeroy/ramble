@@ -266,7 +266,7 @@ _ramble() {
     then
         RAMBLE_COMPREPLY="-h --help -H --all-help --color -c --config -C --config-scope -d --debug --disable-passthrough -N --disable-logger -P --disable-progress-bar --timestamp --pdb -w --workspace -D --workspace-dir -W --no-workspace --use-workspace-repo -k --insecure -l --enable-locks -L --disable-locks -m --mock --mock-applications --mock-modifiers --mock-package-managers --mock-workflow-managers --mock-base-applications --mock-base-modifiers --mock-base-package-managers --mock-base-workflow-managers -p --profile --sorted-profile --lines -v --verbose --stacktrace -V --version --print-shell-vars"
     else
-        RAMBLE_COMPREPLY="attributes clean commands config debug deployment docs edit flake8 help info license list mirror mods on python repo results software-definitions style unit-test workspace"
+        RAMBLE_COMPREPLY="attributes clean commands config debug deployment docs edit help info license list mirror on python repo results software-definitions style unit-test workspace"
     fi
 }
 
@@ -420,15 +420,6 @@ _ramble_edit() {
     fi
 }
 
-_ramble_flake8() {
-    if $list_options
-    then
-        RAMBLE_COMPREPLY="-h --help -b --base -k --keep-temp -a --all -o --output -r --root-relative -U --no-untracked"
-    else
-        RAMBLE_COMREPLY=""
-    fi
-}
-
 _ramble_help() {
     if $list_options
     then
@@ -528,10 +519,6 @@ _ramble_mirror_set_url() {
 
 _ramble_mirror_list() {
     RAMBLE_COMPREPLY="-h --help --scope"
-}
-
-_ramble_mods() {
-    RAMBLE_COMPREPLY="-h --help"
 }
 
 _ramble_on() {
