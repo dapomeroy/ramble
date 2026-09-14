@@ -63,13 +63,14 @@ For specialized workflows, consult the relevant **Agent Skill** under `.agents/s
 | :--- | :--- | :--- |
 | **Workspace Wizard** | Interactive setup of experiment workspaces, scaling matrices, and YAML configurations | [.agents/skills/ramble-workspace-wizard/SKILL.md](.agents/skills/ramble-workspace-wizard/SKILL.md) |
 | **Definition Author** | Authoring Ramble object definitions (e.g., Applications, Modifiers, Package/Workflow Managers, etc.) | [.agents/skills/ramble-definition-author/SKILL.md](.agents/skills/ramble-definition-author/SKILL.md) |
+| **Repo Version Updater** | Updating known versions of Ramble repository objects available in package managers | [.agents/skills/ramble-repo-version-updater/SKILL.md](.agents/skills/ramble-repo-version-updater/SKILL.md) |
+| **Compatibility Auditor** | Auditing object definitions for upstream breakage, compatibility, and deprecations across versions | [.agents/skills/ramble-compatibility-auditor/SKILL.md](.agents/skills/ramble-compatibility-auditor/SKILL.md) |
 | **Experiment Runner** | Using Ramble to perform experiments - execution lifecycle (`ramble on`), dry-run validation, and execution debugging | [.agents/skills/ramble-experiment-runner/SKILL.md](.agents/skills/ramble-experiment-runner/SKILL.md) |
 | **Results Analyzer** | FOM extraction, speedup & scaling efficiency metrics, and benchmark report generation | [.agents/skills/ramble-results-analyzer/SKILL.md](.agents/skills/ramble-results-analyzer/SKILL.md) |
 | **Documentation Author** | Writing Sphinx/reST documentation in `docs/`, building HTML docs, and link checking | [.agents/skills/ramble-documentation-author/SKILL.md](.agents/skills/ramble-documentation-author/SKILL.md) |
 | **Spack Integration** | Spack specs (`pkg@ver %compiler`), environment mapping, and concretization troubleshooting | [.agents/skills/ramble-spack-integration/SKILL.md](.agents/skills/ramble-spack-integration/SKILL.md) |
 | **Workflow Managers** | Slurm batch directives (`#SBATCH`), partition settings, and launcher overrides | [.agents/skills/ramble-workflow-managers/SKILL.md](.agents/skills/ramble-workflow-managers/SKILL.md) |
-| **GCP Cluster Toolkit** | Provisioning Google Cloud HPC/AI clusters (`ghpc`) to host Ramble experiment sweeps | [.agents/skills/gcp-cluster-toolkit/SKILL.md](.agents/skills/gcp-cluster-toolkit/SKILL.md) |
-| **Developer Guide** | Guidelines for codebase contributors: pytest fixtures (`make_workspace_from_config`), directive lazy loading, and style checks | [.agents/skills/ramble-developer/SKILL.md](.agents/skills/ramble-developer/SKILL.md) |
+| **Developer Guide** | Guidelines for codebase contributors: pytest fixtures (`make_workspace_from_config`), directive lazy loading, style checks, and CLI completions | [.agents/skills/ramble-developer/SKILL.md](.agents/skills/ramble-developer/SKILL.md) |
 
 ## Developer Guidelines & Code Contributions
 
@@ -78,3 +79,4 @@ When modifying the Ramble codebase, writing unit tests, or checking style compli
   * Running tests via `ramble unit-test` and using the `make_workspace_from_config` fixture.
   * Correctly setting `__module__` on mock test classes for directive lazy-loading.
   * Running `ramble style` checks (`isort`, `black`, `flake8`, `mypy`, `ruff`).
+  * Updating shell completion scripts (`ramble commands --update-completion`) when modifying CLI arguments.

@@ -123,3 +123,16 @@ Ramble enforces code formatting and type safety using `isort`, `black`, `flake8`
 
 ### Mock Files and Style Checks
 When adding mock application or modifier files (e.g., in `var/ramble/repos/builtin.mock/`), ensure these files contain valid Python syntax, appropriate docstrings, and standard copyright headers. `ramble style` runs on the entire repository and will fail if mock files have syntax or formatting errors.
+
+---
+
+## 6. Updating Shell Completion Scripts
+
+Whenever you add, modify, or remove CLI commands, subcommands, arguments, or options, you must update the bash completion script:
+
+```bash
+ramble commands --update-completion
+```
+
+Continuous integration checks enforce that `share/ramble/ramble-completion.bash` is in sync with command arguments via `git diff --exit-code`. Always run this command before committing CLI modifications.
+
